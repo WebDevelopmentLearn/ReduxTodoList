@@ -1,0 +1,91 @@
+
+.TodoFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: #7d7d7d;
+    width: max-content;
+    gap: 6px;
+
+    ul {
+        margin-top: 6px;
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 6px;
+            background-color: #c4c4c4;
+            border-radius: 8px;
+
+
+
+        }
+
+
+    }
+}
+
+.complete {
+    text-decoration: line-through;
+    color: #9b4100;
+}
+
+.todoControls {
+    display: flex;
+    gap: 6px;
+}
+
+.todoInput {
+    padding: 3px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background-color: #c4c4c4;
+    transition: background-color 0.3s;
+
+    &:focus {
+        outline: 2px solid #8c55ca;
+    }
+}
+
+.btn {
+    background-color: #8c55ca;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #9b4100;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .TodoFormContainer {
+        width: 100%;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            width: 100%;
+
+
+        }
+    }
+}
