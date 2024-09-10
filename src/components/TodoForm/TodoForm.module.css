@@ -25,6 +25,7 @@
   padding: 6px;
   background-color: #c4c4c4;
   border-radius: 8px;
+  min-width: 300px;
 }
 
 .complete {
@@ -32,24 +33,24 @@
   color: #9b4100;
 }
 
-.todoControls {
+.todoInputs {
   display: flex;
-  gap: 6px;
+  justify-content: space-between;
+  align-items: center;
 }
-
-.todoInput {
-  padding: 3px;
+.todoInputs .todoInput {
+  padding: 8px;
   border-radius: 6px;
   border: none;
   outline: none;
   background-color: #c4c4c4;
   transition: background-color 0.3s;
 }
-.todoInput:focus {
+.todoInputs .todoInput:focus {
   outline: 2px solid #8c55ca;
 }
 
-.btn {
+.btn, .addTodoBtn {
   background-color: #8c55ca;
   color: white;
   border: none;
@@ -58,8 +59,12 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.btn:hover {
+.btn:hover, .addTodoBtn:hover {
   background-color: #9b4100;
+}
+
+.addTodoBtn {
+  padding: 8px;
 }
 
 @media screen and (max-width: 768px) {

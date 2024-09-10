@@ -3,10 +3,11 @@ import styles from "./TodoForm.module.scss";
 import {Controller, useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {addTodo, removeTodo, toggleTodo} from "../../store/reducers/userSlice";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import {LangContext} from "../../contexts/LangContext";
 
 export const TodoForm = () => {
-
+    const {lang} = useContext(LangContext);
     const {register, handleSubmit, reset, control, formState: {errors}} = useForm();
     const todos = useSelector(state => state.todoReducer.todos);
     const dispatch = useDispatch();
@@ -30,34 +31,20 @@ export const TodoForm = () => {
         <div className={styles.TodoFormContainer}>
             <h1>Redux TodoList</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                {/*<Controller*/}
-                {/*    name="todo"*/}
-                {/*    control={control}*/}
-                {/*    defaultValue=""*/}
-                {/*    rules={{required: "This field is required"}}*/}
-                {/*    render={({field: {value, onChange, ref}, fieldState: {error}}) => (<div>*/}
-                {/*            <input*/}
-                {/*                type="text"*/}
-                {/*                value={value}*/}
-                {/*                onChange={onChange}*/}
-                {/*                ref={ref}*/}
-                {/*            />*/}
-                {/*            {error && <p>{error.message}</p>}*/}
-                {/*        </div>)*/}
-                {/*    }*/}
-                {/*/>*/}
-
                 <div className={styles.todoControls}>
-                    <input className={styles.todoInput} type="text"
-                           placeholder="Введите описание таска" {...register("todoInput", {
-                        required: "This field is required",
-                        minLength: {
-                            value: 5,
-                            message: "The minimum length is 5 characters"
-                        }
-                    })}/>
-                    {errors.todoInput && <p>{errors.todoInput.message}</p>}
-                    <button className={styles.btn} type="submit">Add Todo</button>
+                    <div className={styles.todoInputs}>
+                        <input className={styles.todoInput} type="text"
+                               placeholder="Введите описание таска" {...register("todoInput", {
+                            required: "This field is required",
+                            minLength: {
+                                value: 5,
+                                message: `${lang === "ru" ? "Минимальная длина 5 символов" : "Minimum length is 5 characters"}`
+                            }
+                        })}/>
+                        <button className={`${styles.btn} ${styles.addTodoBtn}`} type="submit">{lang === "ru" ? "Добавить таск" : "Add todo"}</button>
+                    </div>
+                    {errors.todoInput && <p style={{color: "#b92a2a", fontWeight: "600"}}>{errors.todoInput.message}</p>}
+
                 </div>
                 <ul>
                     {todos?.map(todo =>
@@ -65,7 +52,7 @@ export const TodoForm = () => {
                             <input type="checkbox" checked={todo.isCompleted}
                                    onChange={() => handleToggle(todo.id)}/>
                             <p className={todo.isCompleted ? styles.complete : null}>{todo.title}</p>
-                            <button className={styles.btn} onClick={() => handleDelete(todo.id)}>Delete</button>
+                            <button className={styles.btn} onClick={() => handleDelete(todo.id)}>{lang === "ru" ? "Удалить" : "Delete"}</button>
                         </li>
                     )}
                 </ul>

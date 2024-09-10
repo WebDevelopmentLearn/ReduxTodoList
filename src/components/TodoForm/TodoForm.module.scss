@@ -28,7 +28,7 @@
             padding: 6px;
             background-color: #c4c4c4;
             border-radius: 8px;
-
+            min-width: 300px;
 
 
         }
@@ -43,22 +43,35 @@
 }
 
 .todoControls {
-    display: flex;
-    gap: 6px;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: center;
+    //align-items: center;
+    //gap: 6px;
 }
 
-.todoInput {
-    padding: 3px;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-    background-color: #c4c4c4;
-    transition: background-color 0.3s;
+.todoInputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //gap: 12px;
 
-    &:focus {
-        outline: 2px solid #8c55ca;
+
+    .todoInput {
+        padding: 8px;
+        border-radius: 6px;
+        //min-width: 200px;
+        border: none;
+        outline: none;
+        background-color: #c4c4c4;
+        transition: background-color 0.3s;
+
+        &:focus {
+            outline: 2px solid #8c55ca;
+        }
     }
 }
+
 
 .btn {
     background-color: #8c55ca;
@@ -74,6 +87,10 @@
     }
 }
 
+.addTodoBtn {
+    @extend .btn;
+    padding: 8px;
+}
 @media screen and (max-width: 768px) {
     .TodoFormContainer {
         width: 100%;
