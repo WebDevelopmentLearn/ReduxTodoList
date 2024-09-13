@@ -18,7 +18,6 @@ const todoSlice = createSlice({
         reducers: {
             addTodo: (state, action) => {
                 state.todos.push(action.payload);
-                localStorage.setItem("todos", JSON.stringify(state.todos));
             },
             removeTodo: (state, action) => {
                 state.todos = state.todos.filter(todo => todo.id !== action.payload);
